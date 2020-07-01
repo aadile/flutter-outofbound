@@ -10,7 +10,9 @@ class ActualPosition extends StatelessWidget {
 
     return  Scaffold(
           backgroundColor: Colors.red,
-          body: Text("page Actual Position " + userLocation.latitude.toString() + " and " + userLocation.longitude.toString())
+          body: Center(
+            child: Text("page Actual Position " + userLocation.latitude.toString() + " and " + userLocation.longitude.toString()),
+          )
     );
   }
 }
