@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:out_of_bound_ato/settings.dart';
+import 'package:out_of_bound_ato/starting_position.dart';
+
+import 'actual_position.dart';
 
 const TEXT_SIZE = 9.0;
 const ICON_SIZE = 12.0;
@@ -88,31 +92,5 @@ class _HomePageState extends State<HomePage> {
                 ],
               ))
         );
-  }
-}
-
-class SettingsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    print("settings Page OK");
-    return Scaffold(backgroundColor: Colors.green, body: Text("page settings"));
-  }
-}
-
-class ActualPosition extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    print("Actual Position Page OK");
-    return Scaffold(
-        backgroundColor: Colors.red, body: Text("page Actual Position"));
-  }
-}
-
-class StartPosition extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    print("Start Position  Page OK");
-    return Scaffold(
-        backgroundColor: Colors.blue, body: Text("page Start Position"));
   }
 }
