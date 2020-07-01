@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:out_of_bound_ato/settings.dart';
-import 'package:out_of_bound_ato/starting_position.dart';
+import 'package:out_of_bound_ato/service/location_service.dart';
+import 'package:out_of_bound_ato/subpage/settings.dart';
+import 'package:out_of_bound_ato/subpage/starting_position.dart';
+import 'package:out_of_bound_ato/subpage/actual_position.dart';
+import 'package:provider/provider.dart';
 
-import 'actual_position.dart';
+import 'model/user_location.dart';
 
 const TEXT_SIZE = 9.0;
 const ICON_SIZE = 12.0;
@@ -14,7 +17,12 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: "Welcome to World Flutter", home: HomePage());
+    return StreamProvider<UserLocation>(
+        create:(context) => LocationService().locationStream,
+        child: MaterialApp(
+            title: "Welcome to World Flutter",
+            home: HomePage()
+        ));
   }
 }
 
