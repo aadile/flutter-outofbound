@@ -5,8 +5,12 @@ class StartPosition extends StatelessWidget {
   Widget build(BuildContext context) {
     print("Start Position Page OK");
     return Scaffold(
-        backgroundColor: Colors.blue,
-        body: Text("page Start Position")
+      backgroundColor: Colors.blue,
+      body: Container(
+          alignment: Alignment.center,
+          padding: EdgeInsets.all(5),
+          child: Text("page Start Position")
+      ),
     );
   }
 }

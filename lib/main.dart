@@ -18,11 +18,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<UserLocation>(
-        create:(context) => LocationService().locationStream,
-        child: MaterialApp(
-            title: "Welcome to World Flutter",
-            home: HomePage()
-        ));
+        create: (context) => LocationService().locationStream,
+        child:
+            MaterialApp(title: "Welcome to World Flutter", home: HomePage()));
   }
 }
 
@@ -38,11 +36,70 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var headerHeight = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: AppBar(title: Text("Hello World")),
         body: choiceButton[selectedButton],
-        backgroundColor: choiceColorButton[selectedButton],
-        bottomNavigationBar: Align(
+        bottomNavigationBar: Container(
+            height: 40,
+            alignment: Alignment.bottomCenter,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: RaisedButton.icon(
+                      onPressed: () {
+                        setState(() {
+                          selectedButton = 0;
+                          print("selected Button Starting Location");
+                        });
+                      },
+                      icon: Icon(Icons.location_city),
+                      label: Flexible(
+                          child: Text("Starting location",
+                              style: new TextStyle(fontSize: TEXT_SIZE),
+                              textAlign: TextAlign.center)),
+                      color: Colors.blue,
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0))),
+                ),
+                Expanded(
+                    child: RaisedButton.icon(
+                        onPressed: () {
+                          setState(() {
+                            selectedButton = 1;
+                            print("selected Button Actual Location");
+                          });
+                        },
+                        icon: Icon(Icons.my_location),
+                        label: Flexible(
+                            child: Text("Actual Position",
+                                style: new TextStyle(fontSize: TEXT_SIZE),
+                                textAlign: TextAlign.center)),
+                        color: Colors.red,
+                        shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30.0)))),
+                Expanded(
+                    child: RaisedButton.icon(
+                        onPressed: () {
+                          setState(() {
+                            selectedButton = 2;
+                            print("selected Button Setting");
+                          });
+                        },
+                        icon: Icon(Icons.settings),
+                        label: Flexible(
+                            child: Text("Settings",
+                                style: new TextStyle(fontSize: TEXT_SIZE),
+                                textAlign: TextAlign.center)),
+                        color: Colors.green,
+                        shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30.0))))
+              ],
+            ))
+
+        /*Align(
+              heightFactor: 100,
               alignment: Alignment.bottomCenter,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -98,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                       )
                   )
                 ],
-              ))
+              ))*/
         );
   }
 }

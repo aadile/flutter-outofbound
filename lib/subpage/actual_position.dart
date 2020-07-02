@@ -6,13 +6,19 @@ class ActualPosition extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var userLocation = Provider.of<UserLocation>(context);
-    print("page Actual Position " + userLocation.latitude.toString() + " and " + userLocation.longitude.toString());
+    print("page Actual Position " +
+        userLocation?.latitude.toString() +
+        " and " +
+        userLocation?.longitude.toString());
 
-    return  Scaffold(
-          backgroundColor: Colors.red,
-          body: Center(
-            child: Text("page Actual Position " + userLocation.latitude.toString() + " and " + userLocation.longitude.toString()),
-          )
+    return Scaffold(
+      backgroundColor: Colors.red,
+      body: Container(
+        alignment: Alignment.center,
+        padding: EdgeInsets.all(5),
+        child: Text(
+            "page Actual Position latitude ${userLocation?.latitude}  and longitude ${userLocation?.longitude}"),
+      ),
     );
   }
 }

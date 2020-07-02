@@ -5,8 +5,12 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     print("settings Page OK");
     return Scaffold(
-        backgroundColor: Colors.green,
-        body: Text("page settings")
+      backgroundColor: Colors.green,
+      body: Container(
+        alignment: Alignment.center,
+        padding: EdgeInsets.all(5),
+        child: Text("page settings")
+      ),
     );
   }
 }
