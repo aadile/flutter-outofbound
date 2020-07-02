@@ -30,7 +30,7 @@ class LocationService {
       }
     });
   }
-
+/*
   Future<UserLocation> getLocation() async {
     try {
       print("here getLocation");
@@ -44,6 +44,6 @@ class LocationService {
     }
 
     return _currentLocation;
-  }
+  }*/
 }
 
