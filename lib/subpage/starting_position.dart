@@ -12,12 +12,16 @@ class StartPosition extends StatelessWidget {
         body: Container(
             alignment: Alignment.center,
             padding: EdgeInsets.all(5),
-            child: _locationProvider.startingPosition == null
-                ?  Text(
-                "Please, click a button as start on page actual position, thank ")
-                : Text(
-                "My Last Position ${_locationProvider?.startingPosition.latitude} and ${_locationProvider.startingPosition.longitude}")
-        ),
+            child: Column(
+                 mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+              Text(_locationProvider.startingPosition == null
+                  ? "Please, click a button as start on page actual position, thank "
+                  : "My Last Position ${_locationProvider?.startingPosition?.latitude} and ${_locationProvider.startingPosition?.longitude}"),
+              Text(_locationProvider.distance == null
+                  ? "Please move or wait to have GPS to detect an actual position and check a button mark as position if you don't do it"
+                  : "actually at ${_locationProvider.distance} meters from this point "),
+            ])),
       );
     });
   }

@@ -37,7 +37,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var headerHeight = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: AppBar(title: Text("Hello World")),
         body: choiceButton[selectedButton],

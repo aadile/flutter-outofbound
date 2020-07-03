@@ -1,20 +1,24 @@
 import 'package:flutter/cupertino.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:location/location.dart';
-import 'package:out_of_bound_ato/model/user_location.dart';
 
 class LocationProvider extends ChangeNotifier {
+  LocationData _currentPosition;
+  LocationData _startingPosition;
 
-  UserLocation _currentPosition;
-  UserLocation _startingPosition;
+  double _distance;
 
   var location = Location();
-
+  var geoLocator = Geolocator();
 
   void setStartingPosition() {
-    _startingPosition = _currentPosition;
+    location.getLocation().then((value) {
+      this._startingPosition = value;
+    });
+
+    this.getDistance();
     notifyListeners();
   }
-
 
   void initLocationProvider() {
     print("here LocationService");
@@ -22,11 +26,8 @@ class LocationProvider extends ChangeNotifier {
       if (granted == PermissionStatus.granted) {
         location.onLocationChanged.listen((locationData) {
           if (locationData != null) {
-            _currentPosition =
-                UserLocation(
-                  latitude: locationData.latitude,
-                  longitude: locationData.longitude,
-                );
+            _currentPosition = locationData;
+            this.getDistance();
             notifyListeners();
           }
         });
@@ -34,12 +35,17 @@ class LocationProvider extends ChangeNotifier {
     });
   }
 
-  void lastPosition(UserLocation last) {
-    _startingPosition = last;
-    notifyListeners();
+  Future<void> getDistance() async {
+    this.currentPosition == null || this.startingPosition == null
+        ? _distance = null
+        : _distance = await geoLocator.distanceBetween(
+            this.startingPosition?.latitude,
+            this.startingPosition?.longitude,
+            this.currentPosition?.latitude,
+            this.currentPosition?.longitude);
   }
 
-  UserLocation get currentPosition => _currentPosition;
-  UserLocation get startingPosition => _startingPosition;
-
+  LocationData get currentPosition => _currentPosition;
+  LocationData get startingPosition => _startingPosition;
+  double get distance => _distance;
 }
