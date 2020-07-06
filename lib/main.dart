@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:out_of_bound_ato/provider/location_provider.dart';
+import 'package:out_of_bound_ato/provider/settings_provider.dart';
 import 'package:out_of_bound_ato/subpage/actual_position.dart';
 import 'package:out_of_bound_ato/subpage/settings.dart';
 import 'package:out_of_bound_ato/subpage/starting_position.dart';
@@ -19,6 +20,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => LocationProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => SettingsProvider(),
         )
       ],
       child: MaterialApp(title: "Welcome to World Flutter", home: HomePage()));

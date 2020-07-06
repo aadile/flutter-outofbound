@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:out_of_bound_ato/provider/location_provider.dart';
+import 'package:out_of_bound_ato/provider/settings_provider.dart';
 import 'package:provider/provider.dart';
 
 class ActualPosition extends StatefulWidget {
@@ -12,12 +13,15 @@ class _ActualPositionState extends State<ActualPosition> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<LocationProvider>(builder: (context, _locationProvider, _) {
+    return Consumer2<LocationProvider, SettingsProvider>(builder: (context, _locationProvider, _settingsProvider, _) {
       print("page Actual Position " +
           _locationProvider.currentPosition?.latitude.toString() +
           " and " +
           _locationProvider.currentPosition?.longitude.toString());
 
+      print("page Actual Position => Boundary ${_settingsProvider.boundary}");
+
+      print("page Actual Position => EnableAlert ${_settingsProvider.isEnableAlert}");
       _locationProvider.initLocationProvider();
 
       return Scaffold(

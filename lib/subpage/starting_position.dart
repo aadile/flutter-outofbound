@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:out_of_bound_ato/provider/location_provider.dart';
+import 'package:out_of_bound_ato/provider/settings_provider.dart';
 import 'package:provider/provider.dart';
 
 class StartPosition extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<LocationProvider>(builder: (context, _locationProvider, _) {
+    return Consumer2<LocationProvider, SettingsProvider>(builder: (context, _locationProvider, _settingsProvider, _) {
       print("Start Position Page OK");
+      print("Start Position Page boundary ${_settingsProvider.boundary}");
+      print("Start Position Page => EnableAlert ${_settingsProvider.isEnableAlert}");
+
       return Scaffold(
         backgroundColor: Colors.blue,
         body: Container(
