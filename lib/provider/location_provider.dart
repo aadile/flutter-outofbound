@@ -20,17 +20,24 @@ class LocationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void initLocationProvider() {
-    print("here LocationService");
+  bool checkRequestPermission() {
     location.requestPermission().then((granted) {
       if (granted == PermissionStatus.granted) {
-        location.onLocationChanged.listen((locationData) {
-          if (locationData != null) {
-            _currentPosition = locationData;
-            this.getDistance();
-            notifyListeners();
-          }
-        });
+        return true;
+      }
+    });
+
+    return false;
+  }
+
+  void listenChangeLocation() {
+    print("here listenChangeLocation");
+
+    location.onLocationChanged.listen((locationData) {
+      if (locationData != null) {
+        _currentPosition = locationData;
+        this.getDistance();
+        notifyListeners();
       }
     });
   }

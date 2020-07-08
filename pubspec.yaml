@@ -27,7 +27,7 @@ dependencies:
   provider: ^3.0.0
   geolocator: ^5.3.2+2
   toggle_switch: ^0.1.4
-
+  flutter_local_notifications: 1.4.4+1
 
 
   # The following adds the Cupertino Icons font to your application.

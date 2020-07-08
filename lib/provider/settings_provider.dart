@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 
 class SettingsProvider extends ChangeNotifier {
 
-  int _boundary;
-  bool _enableAlerts;
+  int _boundary = 0;
+  bool _enableAlerts = false;
 
   void setBoundary(int boundary){
     _boundary = boundary;
