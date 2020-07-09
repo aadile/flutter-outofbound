@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                               textAlign: TextAlign.center)),
                       //color: Colors.blue,
                       shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0))),
+                          borderRadius: new BorderRadius.circular(10))),
                 ),
                 Expanded(
                     child: FlatButton.icon(
@@ -111,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                                 textAlign: TextAlign.center)),
                         //color: Colors.red,
                         shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(30.0)))),
+                            borderRadius: new BorderRadius.circular(10)))),
                 Expanded(
                     child: FlatButton.icon(
                         onPressed: () {
@@ -135,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                                 textAlign: TextAlign.center)),
                         //color: Colors.green,
                         shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(30.0))))
+                            borderRadius: new BorderRadius.circular(10))))
               ])
             ])));
   }
